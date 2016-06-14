@@ -1,7 +1,9 @@
 package org.lehmann.natalia.queremoscomer;
 
-import android.support.v7.app.AppCompatActivity;
+import android.content.Context;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
 import android.widget.ListView;
 
 import org.lehmann.natalia.queremoscomer.modelo.Menu;
@@ -21,6 +23,9 @@ public class MenuSemanalActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu_semanal);
 
         menuTable = (ListView) findViewById(R.id.menu_semanal);
+
+        LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        menuTable.addHeaderView(inflater.inflate(R.layout.row_menu_header, null), null, false);
 
         new LeerMenuTask(this).execute();
     }

@@ -78,6 +78,9 @@ public class MenuAdapter extends BaseAdapter {
         Date hoy = MenuService.getFechaHoy().getTime();
         if (hoy.getTime() == receta.getFecha().getTime()) {
             holder.fila.setBackgroundColor(context.getColor(R.color.colorAccent_transp));
+
+        } else {
+            holder.fila.setBackgroundColor(context.getColor(android.R.color.white));
         }
 
 
