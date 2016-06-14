@@ -8,6 +8,7 @@ import android.util.Log;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.lehmann.natalia.queremoscomer.MenuSemanalActivity;
 import org.lehmann.natalia.queremoscomer.modelo.Menu;
 
 import java.io.IOException;
@@ -21,9 +22,9 @@ public class LeerMenuTask extends AsyncTask<Void, Void, Void> {
     public static final String LOG_TAG = LeerMenuTask.class.getName();
     private ProgressDialog dialog;
 
-    private Activity context;
+    private MenuSemanalActivity context;
 
-    public LeerMenuTask(Activity context) {
+    public LeerMenuTask(MenuSemanalActivity context) {
         this.context = context;
     }
 
@@ -37,13 +38,16 @@ public class LeerMenuTask extends AsyncTask<Void, Void, Void> {
     @Override
     protected Void doInBackground(Void... params) {
 
+        // FALtA CHEQUEO DE FECHA
         Menu menu = Storage.getMenu(context);
 
         if (menu == null) {
+            Log.d(LOG_TAG, "Armando menu");
             menu = MenuService.armarMenu(context);
-          //  Storage.saveMenu(menu, context);
-            Log.d(LOG_TAG, "MENU ===================== " + menu);
+            Storage.saveMenu(menu, context);
         }
+
+        context.setMenuAdapter(menu);
 
         return null;
     }

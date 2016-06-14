@@ -1,6 +1,7 @@
 package org.lehmann.natalia.queremoscomer.servicios;
 
 import android.app.Activity;
+import android.support.annotation.NonNull;
 import android.util.Log;
 
 import com.google.gson.Gson;
@@ -46,11 +47,7 @@ public class MenuService {
 
         Iteradores iteradores = Storage.getIteradores(context);
 
-        Calendar cal = Calendar.getInstance();
-        cal.set(Calendar.HOUR_OF_DAY, 0);
-        cal.set(Calendar.MINUTE, 0);
-        cal.set(Calendar.SECOND, 0);
-        cal.set(Calendar.MILLISECOND, 0);
+        Calendar cal = getFechaHoy();
 
         for (int i=0; i < 7; i++) {
 
@@ -62,7 +59,19 @@ public class MenuService {
             cal.add(Calendar.DAY_OF_MONTH, 1);
         }
 
+        Storage.saveIteradores(iteradores, context);
+
         return menu;
+    }
+
+    @NonNull
+    private static Calendar getFechaHoy() {
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.HOUR_OF_DAY, 0);
+        cal.set(Calendar.MINUTE, 0);
+        cal.set(Calendar.SECOND, 0);
+        cal.set(Calendar.MILLISECOND, 0);
+        return cal;
     }
 
     private static RecetaCompuesta getSiguienteReceta(Map<Categoria, List<Receta>> primerosPlatos,

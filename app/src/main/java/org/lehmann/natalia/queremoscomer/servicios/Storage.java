@@ -88,4 +88,16 @@ public class Storage {
 
         return it;
     }
+
+    public static void saveIteradores(Iteradores iteradores, Activity context) {
+
+        SharedPreferences sharedPref = context.getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+
+        Gson gson = new Gson();
+        String json = gson.toJson(iteradores);
+
+        editor.putString(ITERADORES_KEY, json);
+        editor.apply();
+    }
 }
