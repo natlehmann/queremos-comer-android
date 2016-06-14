@@ -17,6 +17,8 @@
             android:layout_weight="0.2"
             android:layout_marginRight="4dp"
             android:layout_marginEnd="4dp"
+            android:textColor="@color/colorAccent"
+            android:textStyle="bold"
             />
 
         <TextView
