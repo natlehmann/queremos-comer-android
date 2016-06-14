@@ -13,6 +13,7 @@ import org.lehmann.natalia.queremoscomer.modelo.Menu;
 import org.lehmann.natalia.queremoscomer.modelo.RecetaDia;
 
 import java.text.SimpleDateFormat;
+import java.util.Locale;
 
 /**
  * Created by natalia on 6/14/16.
@@ -23,7 +24,7 @@ public class MenuAdapter extends BaseAdapter {
     private Activity context;
     private static LayoutInflater inflater=null;
 
-    private static final SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yy");
+    private static final SimpleDateFormat dateFormat = new SimpleDateFormat("EEE dd", new Locale("es"));
 
     public MenuAdapter(Menu menu, Activity context) {
         this.menu = menu;
