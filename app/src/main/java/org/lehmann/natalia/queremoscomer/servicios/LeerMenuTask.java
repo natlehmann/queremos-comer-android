@@ -1,18 +1,13 @@
 package org.lehmann.natalia.queremoscomer.servicios;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import org.json.JSONException;
-import org.json.JSONObject;
 import org.lehmann.natalia.queremoscomer.MenuSemanalActivity;
 import org.lehmann.natalia.queremoscomer.modelo.Menu;
 
-import java.io.IOException;
-import java.io.InputStream;
+import java.util.Date;
 
 /**
  * Created by natalia on 6/13/16.
@@ -32,16 +27,17 @@ public class LeerMenuTask extends AsyncTask<Void, Void, Void> {
     protected void onPreExecute() {
         super.onPreExecute();
 
-        dialog = ProgressDialog.show(context, "", "Please wait...");
+        dialog = ProgressDialog.show(context, "", "Un momento por favor...");
     }
 
     @Override
     protected Void doInBackground(Void... params) {
 
-        // FALtA CHEQUEO DE FECHA
         Menu menu = Storage.getMenu(context);
 
-        if (menu == null) {
+        Date hoy = MenuService.getFechaHoy().getTime();
+
+        if (menu == null || hoy.getTime() > menu.getFechaHasta().getTime()) {
             Log.d(LOG_TAG, "Armando menu");
             menu = MenuService.armarMenu(context);
             Storage.saveMenu(menu, context);
