@@ -39,7 +39,7 @@ public class Menu implements Serializable {
         this.fechaHasta = fechaHasta;
     }
 
-    public void addReceta(Receta almuerzo, Receta cena, Date fecha) {
+    public void addReceta(RecetaCompuesta almuerzo, RecetaCompuesta cena, Date fecha) {
         if (this.recetas == null) {
             this.recetas = new LinkedList<>();
         }

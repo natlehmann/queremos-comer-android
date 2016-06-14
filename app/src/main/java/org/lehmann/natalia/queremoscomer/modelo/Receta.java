@@ -56,6 +56,6 @@ public class Receta implements Serializable {
 
     @Override
     public String toString() {
-        return this.nombre + " - cat:" + this.categoria + " - tipo: " + this.tipo;
+        return this.nombre;
     }
 }

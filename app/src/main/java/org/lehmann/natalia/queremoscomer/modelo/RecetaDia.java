@@ -9,12 +9,12 @@ import java.util.Date;
 public class RecetaDia implements Serializable {
 
     private Date fecha;
-    private Receta almuerzo;
-    private Receta cena;
+    private RecetaCompuesta almuerzo;
+    private RecetaCompuesta cena;
 
     public RecetaDia(){}
 
-    public RecetaDia(Receta almuerzo, Receta cena, Date fecha) {
+    public RecetaDia(RecetaCompuesta almuerzo, RecetaCompuesta cena, Date fecha) {
         this.almuerzo = almuerzo;
         this.cena = cena;
         this.fecha = fecha;
@@ -28,19 +28,19 @@ public class RecetaDia implements Serializable {
         this.fecha = fecha;
     }
 
-    public Receta getAlmuerzo() {
+    public RecetaCompuesta getAlmuerzo() {
         return almuerzo;
     }
 
-    public void setAlmuerzo(Receta almuerzo) {
+    public void setAlmuerzo(RecetaCompuesta almuerzo) {
         this.almuerzo = almuerzo;
     }
 
-    public Receta getCena() {
+    public RecetaCompuesta getCena() {
         return cena;
     }
 
-    public void setCena(Receta cena) {
+    public void setCena(RecetaCompuesta cena) {
         this.cena = cena;
     }
 

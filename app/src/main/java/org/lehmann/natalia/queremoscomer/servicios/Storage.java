@@ -6,7 +6,15 @@ import android.content.SharedPreferences;
 
 import com.google.gson.Gson;
 
+import org.lehmann.natalia.queremoscomer.modelo.Categoria;
+import org.lehmann.natalia.queremoscomer.modelo.IteradorGuarnicion;
+import org.lehmann.natalia.queremoscomer.modelo.IteradorPrimerPlato;
+import org.lehmann.natalia.queremoscomer.modelo.Iteradores;
 import org.lehmann.natalia.queremoscomer.modelo.Menu;
+import org.lehmann.natalia.queremoscomer.modelo.Tipo;
+
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Created by natalia on 6/13/16.
@@ -14,6 +22,7 @@ import org.lehmann.natalia.queremoscomer.modelo.Menu;
 public class Storage {
 
     private static final String MENU_KEY = "menu";
+    private static final String ITERADORES_KEY = "iteradores";
 
     private static final String LOG_TAG = Storage.class.getName();
 
@@ -44,5 +53,39 @@ public class Storage {
 
         editor.putString(MENU_KEY, menuJson);
         editor.apply();
+    }
+
+    public static Iteradores getIteradores(Activity context) {
+
+        SharedPreferences sharedPref = context.getPreferences(Context.MODE_PRIVATE);
+
+        String iteradoresStr = sharedPref.getString(ITERADORES_KEY, null);
+
+        Iteradores it = null;
+
+        if (iteradoresStr != null) {
+
+            Gson gson = new Gson();
+            it = gson.fromJson(iteradoresStr, Iteradores.class);
+        }
+
+        if (it == null) {
+
+            it = new Iteradores();
+
+            List<IteradorGuarnicion> iteradoresGuarnicion= new LinkedList<>();
+            for (Tipo tipo : Tipo.values()) {
+                iteradoresGuarnicion.add(new IteradorGuarnicion(tipo));
+            }
+            it.setItGuarnicion(iteradoresGuarnicion);
+
+            List<IteradorPrimerPlato> iteradoresPrimerPlato = new LinkedList<>();
+            for (Categoria categoria : Categoria.values()) {
+                iteradoresPrimerPlato.add(new IteradorPrimerPlato(categoria));
+            }
+            it.setItPrimerPlato(iteradoresPrimerPlato);
+        }
+
+        return it;
     }
 }
