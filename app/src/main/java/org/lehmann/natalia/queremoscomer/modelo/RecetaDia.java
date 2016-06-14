@@ -12,6 +12,13 @@ public class RecetaDia implements Serializable {
     private Receta almuerzo;
     private Receta cena;
 
+    public RecetaDia(){}
+
+    public RecetaDia(Receta almuerzo, Receta cena, Date fecha) {
+        this.almuerzo = almuerzo;
+        this.cena = cena;
+        this.fecha = fecha;
+    }
 
     public Date getFecha() {
         return fecha;
@@ -35,5 +42,10 @@ public class RecetaDia implements Serializable {
 
     public void setCena(Receta cena) {
         this.cena = cena;
+    }
+
+    @Override
+    public String toString() {
+        return "fecha: " + this.fecha + "almuerzo: " + this.almuerzo + " - cena: " + this.cena;
     }
 }

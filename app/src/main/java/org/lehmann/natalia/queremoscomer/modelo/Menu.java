@@ -2,6 +2,7 @@ package org.lehmann.natalia.queremoscomer.modelo;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -36,5 +37,26 @@ public class Menu implements Serializable {
 
     public void setFechaHasta(Date fechaHasta) {
         this.fechaHasta = fechaHasta;
+    }
+
+    public void addReceta(Receta almuerzo, Receta cena, Date fecha) {
+        if (this.recetas == null) {
+            this.recetas = new LinkedList<>();
+        }
+
+        if (this.fechaDesde == null || this.fechaDesde.getTime() > fecha.getTime()) {
+            this.fechaDesde = fecha;
+        }
+
+        if (this.fechaHasta == null || this.fechaHasta.getTime() < fecha.getTime()) {
+            this.fechaHasta = fecha;
+        }
+
+        this.recetas.add(new RecetaDia(almuerzo, cena, fecha));
+    }
+
+    @Override
+    public String toString() {
+        return this.recetas != null ? this.recetas.toString() : "[vacio]";
     }
 }

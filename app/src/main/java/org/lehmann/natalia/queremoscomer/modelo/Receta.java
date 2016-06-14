@@ -53,4 +53,9 @@ public class Receta implements Serializable {
     public void setComplemento(Tipo complemento) {
         this.complemento = complemento;
     }
+
+    @Override
+    public String toString() {
+        return this.nombre;
+    }
 }
