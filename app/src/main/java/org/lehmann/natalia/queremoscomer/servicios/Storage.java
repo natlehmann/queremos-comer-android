@@ -1,6 +1,5 @@
 package org.lehmann.natalia.queremoscomer.servicios;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 
@@ -26,9 +25,10 @@ public class Storage {
 
     private static final String LOG_TAG = Storage.class.getName();
 
-    public static Menu getMenu(Activity context) {
+    public static Menu getMenu(Context context) {
 
-        SharedPreferences sharedPref = context.getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences sharedPref = context.getSharedPreferences(
+                Storage.class.getName(), Context.MODE_PRIVATE);
 
         String menuStr = sharedPref.getString(MENU_KEY, null);
 
@@ -43,9 +43,10 @@ public class Storage {
         return menu;
     }
 
-    public static void saveMenu(Menu menu, Activity context) {
+    public static void saveMenu(Menu menu, Context context) {
 
-        SharedPreferences sharedPref = context.getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences sharedPref = context.getSharedPreferences(
+                Storage.class.getName(), Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
 
         Gson gson = new Gson();
@@ -55,9 +56,10 @@ public class Storage {
         editor.apply();
     }
 
-    public static Iteradores getIteradores(Activity context) {
+    public static Iteradores getIteradores(Context context) {
 
-        SharedPreferences sharedPref = context.getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences sharedPref = context.getSharedPreferences(
+                Storage.class.getName(), Context.MODE_PRIVATE);
 
         String iteradoresStr = sharedPref.getString(ITERADORES_KEY, null);
 
@@ -89,9 +91,10 @@ public class Storage {
         return it;
     }
 
-    public static void saveIteradores(Iteradores iteradores, Activity context) {
+    public static void saveIteradores(Iteradores iteradores, Context context) {
 
-        SharedPreferences sharedPref = context.getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences sharedPref = context.getSharedPreferences(
+                Storage.class.getName(), Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
 
         Gson gson = new Gson();

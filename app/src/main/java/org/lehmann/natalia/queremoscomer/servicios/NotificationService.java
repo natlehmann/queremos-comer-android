@@ -1,6 +1,5 @@
 package org.lehmann.natalia.queremoscomer.servicios;
 
-import android.app.Activity;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -17,7 +16,7 @@ import org.lehmann.natalia.queremoscomer.modelo.RecetaCompuesta;
  */
 public class NotificationService {
 
-    public static void crearNotificacion(Activity context) {
+    public static void crearNotificacion(Context context) {
 
         RecetaCompuesta receta = MenuService.getRecetaParaAhora(context);
 
@@ -53,4 +52,5 @@ public class NotificationService {
             mNotificationManager.notify(1, mBuilder.build());
         }
     }
+
 }

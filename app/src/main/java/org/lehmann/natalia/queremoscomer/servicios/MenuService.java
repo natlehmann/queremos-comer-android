@@ -1,6 +1,6 @@
 package org.lehmann.natalia.queremoscomer.servicios;
 
-import android.app.Activity;
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
@@ -33,7 +33,7 @@ public class MenuService {
 
     public static final String LOG_TAG = MenuService.class.getName();
 
-    public static Menu getMenu(Activity context) {
+    public static Menu getMenu(Context context) {
 
         Menu menu = Storage.getMenu(context);
 
@@ -48,7 +48,7 @@ public class MenuService {
         return menu;
     }
 
-    private static Menu armarMenu(Activity context) {
+    private static Menu armarMenu(Context context) {
 
         String json = loadJSONFromAsset(context);
         Gson gson = new Gson();
@@ -161,7 +161,7 @@ public class MenuService {
         return mapa;
     }
 
-    private static String loadJSONFromAsset(Activity context) {
+    private static String loadJSONFromAsset(Context context) {
 
         String json = null;
         try {
@@ -178,7 +178,7 @@ public class MenuService {
         return json;
     }
 
-    public static RecetaCompuesta getRecetaParaAhora(Activity context) {
+    public static RecetaCompuesta getRecetaParaAhora(Context context) {
 
         Date hoy = getFechaHoy().getTime();
         RecetaDia recetaDeHoy = null;

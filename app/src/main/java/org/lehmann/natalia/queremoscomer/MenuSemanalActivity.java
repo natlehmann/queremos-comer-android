@@ -1,6 +1,7 @@
 package org.lehmann.natalia.queremoscomer;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -8,8 +9,8 @@ import android.widget.ListView;
 
 import org.lehmann.natalia.queremoscomer.modelo.Menu;
 import org.lehmann.natalia.queremoscomer.servicios.LeerMenuTask;
-import org.lehmann.natalia.queremoscomer.servicios.NotificationService;
 import org.lehmann.natalia.queremoscomer.view.MenuAdapter;
+import org.lehmann.natalia.queremoscomer.view.NotificationSender;
 
 public class MenuSemanalActivity extends AppCompatActivity {
 
@@ -30,7 +31,8 @@ public class MenuSemanalActivity extends AppCompatActivity {
 
         new LeerMenuTask(this).execute();
 
-        NotificationService.crearNotificacion(this);
+        sendBroadcast(new Intent(this, NotificationSender.class));
+
     }
 
     public void setMenuAdapter(final Menu menu) {
