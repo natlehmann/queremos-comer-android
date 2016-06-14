@@ -2,6 +2,7 @@ package org.lehmann.natalia.queremoscomer.servicios;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import com.google.gson.Gson;
 
@@ -22,6 +23,7 @@ public class Storage {
 
     private static final String MENU_KEY = "menu";
     private static final String ITERADORES_KEY = "iteradores";
+    private static final String FIRST_RUN_KEY = "firstRun";
 
     private static final String LOG_TAG = Storage.class.getName();
 
@@ -102,5 +104,20 @@ public class Storage {
 
         editor.putString(ITERADORES_KEY, json);
         editor.apply();
+    }
+
+    public static boolean isFirstRun(Context context) {
+
+        SharedPreferences sharedPref = context.getSharedPreferences(
+                Storage.class.getName(), Context.MODE_PRIVATE);
+
+        boolean firstRun = sharedPref.getBoolean(FIRST_RUN_KEY, true);
+
+        if (firstRun) {
+            sharedPref.edit().putBoolean(FIRST_RUN_KEY, false).commit();
+        }
+
+        Log.d(LOG_TAG, "Es la primer corrida? " + firstRun);
+        return firstRun;
     }
 }

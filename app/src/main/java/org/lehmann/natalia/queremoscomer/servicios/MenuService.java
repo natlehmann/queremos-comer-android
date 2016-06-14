@@ -32,6 +32,8 @@ import java.util.Map;
 public class MenuService {
 
     public static final String LOG_TAG = MenuService.class.getName();
+    public static final int HORA_NOTIF_CENA = 14;
+    public static final int HORA_NOTIF_ALMUERZO = 10;
 
     public static Menu getMenu(Context context) {
 
@@ -195,7 +197,7 @@ public class MenuService {
         if (recetaDeHoy != null) {
 
             Calendar ahora = Calendar.getInstance();
-            if (ahora.get(Calendar.HOUR_OF_DAY) >= 14) {
+            if (ahora.get(Calendar.HOUR_OF_DAY) >= HORA_NOTIF_CENA) {
                 resultado = recetaDeHoy.getCena();
 
             } else {
@@ -204,5 +206,42 @@ public class MenuService {
         }
 
         return resultado;
+    }
+
+    /**
+     * Devuelve tiempo en milis
+     * @return
+     */
+    public static long getTiempoHastaProximoAviso() {
+
+        return getTiempoHastaProximoAviso(new Date());
+    }
+
+
+    public static long getTiempoHastaProximoAviso(Date ahora) {
+
+        Calendar hoy = getFechaHoy();
+        hoy.set(Calendar.HOUR_OF_DAY, HORA_NOTIF_ALMUERZO);
+
+        long milis = 0;
+
+        if (hoy.getTimeInMillis() - ahora.getTime() > 0) {
+            milis = hoy.getTimeInMillis() - ahora.getTime();
+
+        } else {
+
+            hoy.set(Calendar.HOUR_OF_DAY, HORA_NOTIF_CENA);
+            if (hoy.getTimeInMillis() - ahora.getTime() > 0) {
+                milis = hoy.getTimeInMillis() - ahora.getTime();
+
+            } else {
+                hoy.set(Calendar.HOUR_OF_DAY, HORA_NOTIF_ALMUERZO);
+                hoy.add(Calendar.DAY_OF_MONTH, 1);
+
+                milis = hoy.getTimeInMillis() - ahora.getTime();
+            }
+        }
+
+        return milis;
     }
 }

@@ -31,7 +31,8 @@ public class NotificationService {
 
             NotificationCompat.BigTextStyle inboxStyle =
                     new NotificationCompat.BigTextStyle();
-            inboxStyle.setBigContentTitle("Event tracker details:");
+            inboxStyle.setBigContentTitle("Hoy comemos");
+            inboxStyle.setSummaryText(receta.toString());
             mBuilder.setStyle(inboxStyle);
 
             Intent resultIntent = new Intent(context, MenuSemanalActivity.class);

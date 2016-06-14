@@ -9,6 +9,7 @@ import android.widget.ListView;
 
 import org.lehmann.natalia.queremoscomer.modelo.Menu;
 import org.lehmann.natalia.queremoscomer.servicios.LeerMenuTask;
+import org.lehmann.natalia.queremoscomer.servicios.Storage;
 import org.lehmann.natalia.queremoscomer.view.MenuAdapter;
 import org.lehmann.natalia.queremoscomer.view.NotificationSender;
 
@@ -31,7 +32,9 @@ public class MenuSemanalActivity extends AppCompatActivity {
 
         new LeerMenuTask(this).execute();
 
-        sendBroadcast(new Intent(this, NotificationSender.class));
+        if (Storage.isFirstRun(this)) {
+            sendBroadcast(new Intent(this, NotificationSender.class));
+        }
 
     }
 
