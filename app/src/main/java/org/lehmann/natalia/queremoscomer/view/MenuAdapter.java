@@ -11,8 +11,10 @@ import android.widget.TextView;
 import org.lehmann.natalia.queremoscomer.R;
 import org.lehmann.natalia.queremoscomer.modelo.Menu;
 import org.lehmann.natalia.queremoscomer.modelo.RecetaDia;
+import org.lehmann.natalia.queremoscomer.servicios.MenuService;
 
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Locale;
 
 /**
@@ -60,6 +62,7 @@ public class MenuAdapter extends BaseAdapter {
             holder.fecha = (TextView) view.findViewById(R.id.fecha);
             holder.almuerzo = (TextView) view.findViewById(R.id.almuerzo);
             holder.cena = (TextView) view.findViewById(R.id.cena);
+            holder.fila = view.findViewById(R.id.fila);
 
             view.setTag(holder);
 
@@ -72,6 +75,12 @@ public class MenuAdapter extends BaseAdapter {
         holder.almuerzo.setText(receta.getAlmuerzo().toString());
         holder.cena.setText(receta.getCena().toString());
 
+        Date hoy = MenuService.getFechaHoy().getTime();
+        if (hoy.getTime() == receta.getFecha().getTime()) {
+            holder.fila.setBackgroundColor(context.getColor(R.color.colorAccent_transp));
+        }
+
+
         return view;
     }
 
@@ -79,5 +88,6 @@ public class MenuAdapter extends BaseAdapter {
         TextView fecha;
         TextView almuerzo;
         TextView cena;
+        View fila;
     }
 }
