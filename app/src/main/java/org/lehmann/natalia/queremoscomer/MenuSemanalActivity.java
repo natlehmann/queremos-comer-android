@@ -8,6 +8,7 @@ import android.widget.ListView;
 
 import org.lehmann.natalia.queremoscomer.modelo.Menu;
 import org.lehmann.natalia.queremoscomer.servicios.LeerMenuTask;
+import org.lehmann.natalia.queremoscomer.servicios.NotificationService;
 import org.lehmann.natalia.queremoscomer.view.MenuAdapter;
 
 public class MenuSemanalActivity extends AppCompatActivity {
@@ -28,6 +29,8 @@ public class MenuSemanalActivity extends AppCompatActivity {
         menuTable.addHeaderView(inflater.inflate(R.layout.row_menu_header, null), null, false);
 
         new LeerMenuTask(this).execute();
+
+        NotificationService.crearNotificacion(this);
     }
 
     public void setMenuAdapter(final Menu menu) {

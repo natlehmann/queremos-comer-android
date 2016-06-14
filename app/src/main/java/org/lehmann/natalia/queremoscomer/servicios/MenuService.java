@@ -6,8 +6,6 @@ import android.util.Log;
 
 import com.google.gson.Gson;
 
-import org.json.JSONException;
-import org.json.JSONObject;
 import org.lehmann.natalia.queremoscomer.modelo.Carta;
 import org.lehmann.natalia.queremoscomer.modelo.Categoria;
 import org.lehmann.natalia.queremoscomer.modelo.IteradorGuarnicion;
@@ -16,6 +14,7 @@ import org.lehmann.natalia.queremoscomer.modelo.Iteradores;
 import org.lehmann.natalia.queremoscomer.modelo.Menu;
 import org.lehmann.natalia.queremoscomer.modelo.Receta;
 import org.lehmann.natalia.queremoscomer.modelo.RecetaCompuesta;
+import org.lehmann.natalia.queremoscomer.modelo.RecetaDia;
 import org.lehmann.natalia.queremoscomer.modelo.Tipo;
 
 import java.io.IOException;
@@ -34,7 +33,22 @@ public class MenuService {
 
     public static final String LOG_TAG = MenuService.class.getName();
 
-    public static Menu armarMenu(Activity context) {
+    public static Menu getMenu(Activity context) {
+
+        Menu menu = Storage.getMenu(context);
+
+        Date hoy = getFechaHoy().getTime();
+
+        if (menu == null || hoy.getTime() > menu.getFechaHasta().getTime()) {
+            Log.d(LOG_TAG, "Armando menu");
+            menu = MenuService.armarMenu(context);
+            Storage.saveMenu(menu, context);
+        }
+
+        return menu;
+    }
+
+    private static Menu armarMenu(Activity context) {
 
         String json = loadJSONFromAsset(context);
         Gson gson = new Gson();
@@ -162,5 +176,33 @@ public class MenuService {
             Log.e(LOG_TAG, "Error al leer archivo JSON ", ex);
         }
         return json;
+    }
+
+    public static RecetaCompuesta getRecetaParaAhora(Activity context) {
+
+        Date hoy = getFechaHoy().getTime();
+        RecetaDia recetaDeHoy = null;
+        RecetaCompuesta resultado = null;
+
+        Menu menu = getMenu(context);
+
+        for (RecetaDia recetaDia : menu.getRecetas()) {
+            if (recetaDia.getFecha().equals(hoy)) {
+                recetaDeHoy = recetaDia;
+            }
+        }
+
+        if (recetaDeHoy != null) {
+
+            Calendar ahora = Calendar.getInstance();
+            if (ahora.get(Calendar.HOUR_OF_DAY) >= 14) {
+                resultado = recetaDeHoy.getCena();
+
+            } else {
+                resultado = recetaDeHoy.getAlmuerzo();
+            }
+        }
+
+        return resultado;
     }
 }
