@@ -6,12 +6,32 @@
 		{"id": 7, "nombre": "Fideos salteados con vegetales", "categoria":"CEREALES", "tipo":"PESADO", "complemento":"LIVIANO"},
 		{"id": 8, "nombre": "Berenjenas gratinadas", "categoria":"VEGETALES", "tipo":"PESADO", "complemento":"LIVIANO"},
 		{"id": 9, "nombre": "Tarta de atún", "categoria":"CARNES", "tipo":"PESADO", "complemento":"LIVIANO"},
+		{"id": 21, "nombre": "Arroz salteado con huevo y vegetales", "categoria":"CEREALES", "tipo":"PESADO", "complemento":"LIVIANO"},
 		{"id": 10, "nombre": "Tarta de choclo", "categoria":"VEGETALES", "tipo":"PESADO", "complemento":"LIVIANO"},
 		{"id": 11, "nombre": "Guiso de lentejas", "categoria":"CEREALES", "tipo":"PESADO", "complemento":"LIVIANO"},
 		{"id": 12, "nombre": "Tomates rellenos con atún", "categoria":"CARNES", "tipo":"PESADO", "complemento":"LIVIANO"},
 		{"id": 13, "nombre": "Ravioles con tomate y albahaca", "categoria":"CEREALES", "tipo":"PESADO", "complemento":"LIVIANO"},
 		{"id": 14, "nombre": "Rodajas de calabaza a la pizza", "categoria":"VEGETALES", "tipo":"LIVIANO", "complemento":"PESADO"},
-		{"id": 15, "nombre": "Pizza integral de vegetales", "categoria":"CEREALES", "tipo":"PESADO", "complemento":"LIVIANO"}
+		{"id": 15, "nombre": "Pizza integral de vegetales", "categoria":"CEREALES", "tipo":"PESADO", "complemento":"LIVIANO"},
+        {"id": 23, "nombre": "Guiso con fideos", "categoria":"CEREALES", "tipo":"PESADO", "complemento":"LIVIANO"},
+        {"id": 24, "nombre": "Falafel (albóndigas de harina de garbanzos)", "categoria":"CEREALES", "tipo":"PESADO", "complemento":"LIVIANO"},
+        {"id": 25, "nombre": "Pechugas de pollo al limón", "categoria":"CARNES", "tipo":"PESADO", "complemento":"LIVIANO"},
+        {"id": 26, "nombre": "Lasagna vegetariana", "categoria":"VEGETALES", "tipo":"PESADO", "complemento":"LIVIANO"},
+        {"id": 27, "nombre": "Brochettes de lomo", "categoria":"CARNES", "tipo":"PESADO", "complemento":"LIVIANO"},
+      {"id": 28, "nombre": "Chuletas de cerdo a la barbacoa", "categoria":"CARNES", "tipo":"PESADO", "complemento":"LIVIANO"},
+      {"id": 34, "nombre": "Arroz amarillo", "categoria":"CEREALES", "tipo":"PESADO", "complemento":"LIVIANO"},
+      {"id": 35, "nombre": "Albóndigas", "categoria":"CARNES", "tipo":"PESADO", "complemento":"LIVIANO"},
+      {"id": 36, "nombre": "Hamburguesas de lentejas y arroz", "categoria":"CEREALES", "tipo":"PESADO", "complemento":"LIVIANO"},
+      {"id": 39, "nombre": "Brochettes de pollo", "categoria":"CARNES", "tipo":"PESADO", "complemento":"LIVIANO"},
+      {"id": 40, "nombre": "Polenta", "categoria":"CEREALES", "tipo":"PESADO", "complemento":"LIVIANO"},
+      {"id": 41, "nombre": "Zapallitos rellenos", "categoria":"VEGETALES", "tipo":"LIVIANO", "complemento":"PESADO"},
+      {"id": 42, "nombre": "Morrones rellenos asados", "categoria":"VEGETALES", "tipo":"LIVIANO", "complemento":"PESADO"},
+      {"id": 43, "nombre": "Zapallitos gratinados", "categoria":"VEGETALES", "tipo":"LIVIANO", "complemento":"PESADO"},
+      {"id": 44, "nombre": "Pascualina", "categoria":"VEGETALES", "tipo":"LIVIANO", "complemento":"PESADO"},
+      {"id": 45, "nombre": "Tortilla de zapallitos", "categoria":"VEGETALES", "tipo":"LIVIANO", "complemento":"PESADO"},
+      {"id": 46, "nombre": "Canastitas caprese", "categoria":"VEGETALES", "tipo":"PESADO", "complemento":"LIVIANO"},
+      {"id": 48, "nombre": "Berenjenas y morrones guisados", "categoria":"VEGETALES", "tipo":"LIVIANO", "complemento":"PESADO"},
+      {"id": 50, "nombre": "Croquetas de pollo con jamón", "categoria":"CARNES", "tipo":"PESADO", "complemento":"LIVIANO"}
 	],
 	
 	"guarnicion":[
@@ -22,6 +42,17 @@
 		{"id": 17, "nombre": "Ensalada de choclo, arroz y arvejas", "categoria":"VEGETALES", "tipo":"PESADO", "complemento":"LIVIANO"},
 		{"id": 18, "nombre": "Puré de papas", "categoria":"VEGETALES", "tipo":"PESADO", "complemento":"LIVIANO"},
 		{"id": 19, "nombre": "Puré de calabaza", "categoria":"VEGETALES", "tipo":"LIVIANO", "complemento":"PESADO"},
-		{"id": 20, "nombre": "Dados de calabaza al horno", "categoria":"VEGETALES", "tipo":"LIVIANO", "complemento":"PESADO"}
+		{"id": 20, "nombre": "Dados de calabaza al horno", "categoria":"VEGETALES", "tipo":"LIVIANO", "complemento":"PESADO"},
+        {"id": 22, "nombre": "Arroz integral con queso", "categoria":"CEREALES", "tipo":"PESADO", "complemento":"LIVIANO"},
+      {"id": 29, "nombre": "Ensalada de lentejas", "categoria":"CEREALES", "tipo":"PESADO", "complemento":"LIVIANO"},
+      {"id": 30, "nombre": "Ensalada de remolachas", "categoria":"VEGETALES", "tipo":"LIVIANO", "complemento":"PESADO"},
+      {"id": 31, "nombre": "Ensalada de zanahoria y anana", "categoria":"VEGETALES", "tipo":"LIVIANO", "complemento":"PESADO"},
+      {"id": 32, "nombre": "Ensalada de apio y manzana", "categoria":"VEGETALES", "tipo":"LIVIANO", "complemento":"PESADO"},
+      {"id": 33, "nombre": "Arroz amarillo", "categoria":"CEREALES", "tipo":"PESADO", "complemento":"LIVIANO"},
+      {"id": 37, "nombre": "Ensalada de repollo y zanahoria", "categoria":"VEGETALES", "tipo":"LIVIANO", "complemento":"PESADO"},
+      {"id": 38, "nombre": "Ensalada de lechuga y tomate", "categoria":"VEGETALES", "tipo":"LIVIANO", "complemento":"PESADO"},
+      {"id": 39, "nombre": "Ensalada caprese", "categoria":"VEGETALES", "tipo":"LIVIANO", "complemento":"PESADO"},
+      {"id": 47, "nombre": "Berenjenas salteadas al wok", "categoria":"VEGETALES", "tipo":"LIVIANO", "complemento":"PESADO"},
+      {"id": 49, "nombre": "Puré de batatas", "categoria":"VEGETALES", "tipo":"PESADO", "complemento":"LIVIANO"}
 	]
 }

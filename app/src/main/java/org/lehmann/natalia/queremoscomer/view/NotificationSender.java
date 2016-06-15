@@ -25,7 +25,7 @@ public class NotificationSender extends BroadcastReceiver {
         AlarmManager manager = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
         long interval = MenuService.getTiempoHastaProximoAviso();
 
-        Log.i(LOG_TAG, "Programando proxima alarma para dentro de " + interval / 1000 / 60);
+        Log.i(LOG_TAG, "Programando proxima alarma para dentro de (minutos) " + interval / 1000 / 60);
         Intent alarmIntent = new Intent(context, NotificationSender.class);
         manager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, interval,
                 PendingIntent.getBroadcast(context, 0, alarmIntent, 0));
