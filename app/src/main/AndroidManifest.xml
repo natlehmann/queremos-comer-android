@@ -19,6 +19,10 @@
         <receiver
             android:name=".view.NotificationSender"
             android:enabled="true"
+            android:exported="true" />
+        <receiver
+            android:name=".servicios.NotificationScheduler"
+            android:enabled="true"
             android:exported="true"></receiver>
     </application>
 

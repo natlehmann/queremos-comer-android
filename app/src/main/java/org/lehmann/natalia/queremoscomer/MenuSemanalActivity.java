@@ -4,17 +4,19 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.widget.ListView;
 
 import org.lehmann.natalia.queremoscomer.modelo.Menu;
 import org.lehmann.natalia.queremoscomer.servicios.LeerMenuTask;
+import org.lehmann.natalia.queremoscomer.servicios.NotificationScheduler;
 import org.lehmann.natalia.queremoscomer.servicios.Storage;
 import org.lehmann.natalia.queremoscomer.view.MenuAdapter;
-import org.lehmann.natalia.queremoscomer.view.NotificationSender;
 
 public class MenuSemanalActivity extends AppCompatActivity {
 
+    private static final String LOG_TAG = MenuSemanalActivity.class.getName();
     private Menu menu;
     private ListView menuTable;
 
@@ -33,7 +35,7 @@ public class MenuSemanalActivity extends AppCompatActivity {
         new LeerMenuTask(this).execute();
 
         if (Storage.isFirstRun(this)) {
-            sendBroadcast(new Intent(this, NotificationSender.class));
+            sendBroadcast(new Intent(this, NotificationScheduler.class));
         }
 
     }
@@ -50,4 +52,11 @@ public class MenuSemanalActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        Log.d(LOG_TAG, "Solicitando menu");
+        new LeerMenuTask(this).execute();
+    }
 }

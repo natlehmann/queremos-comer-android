@@ -35,9 +35,13 @@ public class MenuService {
     public static final int HORA_NOTIF_CENA = 14;
     public static final int HORA_NOTIF_ALMUERZO = 10;
 
+    private static Menu menu;
+
     public static Menu getMenu(Context context) {
 
-        Menu menu = Storage.getMenu(context);
+        if (menu == null) {
+            menu = Storage.getMenu(context);
+        }
 
         Date hoy = getFechaHoy().getTime();
 
