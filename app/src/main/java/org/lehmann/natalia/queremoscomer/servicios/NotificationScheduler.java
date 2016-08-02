@@ -27,8 +27,8 @@ public class NotificationScheduler extends BroadcastReceiver {
         Calendar firingCal= Calendar.getInstance();
         Calendar currentCal = Calendar.getInstance();
 
-        firingCal.set(Calendar.HOUR_OF_DAY, 21); // At the hour you wanna fire
-        firingCal.set(Calendar.MINUTE, 9); // Particular minute
+        firingCal.set(Calendar.HOUR_OF_DAY, 13); // At the hour you wanna fire
+        firingCal.set(Calendar.MINUTE, 55); // Particular minute
         firingCal.set(Calendar.SECOND, 0); // particular second
 
         long intendedTime = firingCal.getTimeInMillis();
