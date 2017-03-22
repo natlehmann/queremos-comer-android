@@ -212,15 +212,6 @@ public class MenuService {
         return resultado;
     }
 
-    /**
-     * Devuelve tiempo en milis
-     * @return
-     */
-    public static long getTiempoHastaProximoAviso() {
-
-        return getTiempoHastaProximoAviso(new Date());
-    }
-
 
     public static long getTiempoHastaProximoAviso(Date ahora) {
 
