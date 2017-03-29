@@ -32,7 +32,7 @@ import java.util.Map;
 public class MenuService {
 
     public static final String LOG_TAG = MenuService.class.getName();
-    public static final int HORA_NOTIF_CENA = 14;
+    public static final int HORA_NOTIF_CENA = 15;
     public static final int HORA_NOTIF_ALMUERZO = 10;
 
     private static Menu menu;
