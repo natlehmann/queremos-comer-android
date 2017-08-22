@@ -5,8 +5,9 @@ import android.app.NotificationManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.support.v4.content.WakefulBroadcastReceiver;
 
-public class NotificationReceiver extends BroadcastReceiver {
+public class NotificationReceiver extends WakefulBroadcastReceiver {
 
     private static final String LOG_TAG = NotificationReceiver.class.getName();
 
@@ -19,7 +20,10 @@ public class NotificationReceiver extends BroadcastReceiver {
 
         Notification notification = intent.getParcelableExtra(NOTIFICATION);
         int id = intent.getIntExtra(NOTIFICATION_ID, 0);
-        notificationManager.notify(id, notification);
+
+        if (notification != null) {
+            notificationManager.notify(id, notification);
+        }
 
     }
 }

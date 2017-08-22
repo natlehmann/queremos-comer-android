@@ -4,4 +4,5 @@
     <string name="almuerzo">almuerzo</string>
     <string name="cena">cena</string>
     <string name="title_activity_main">Queremos comer</string>
+    <string name="notification_title">Hoy comemos</string>
 </resources>

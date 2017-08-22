@@ -16,6 +16,9 @@ import org.lehmann.natalia.queremoscomer.MenuSemanalActivity;
 import org.lehmann.natalia.queremoscomer.R;
 import org.lehmann.natalia.queremoscomer.modelo.RecetaCompuesta;
 
+import java.util.Calendar;
+import java.util.Date;
+
 /**
  * Created by natalia on 6/14/16.
  */
@@ -28,9 +31,28 @@ public class NotificationService {
         notificationIntent.putExtra(NotificationReceiver.NOTIFICATION, crearNotificacion(context));
         PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
-        long futureInMillis = SystemClock.elapsedRealtime() + 10; // delay ????
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-        alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, futureInMillis, pendingIntent);
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,
+                getTriggerAt(new Date()),
+                1 * AlarmManager.INTERVAL_DAY,
+                pendingIntent);
+    }
+
+
+    private static long getTriggerAt(Date now) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(now);
+
+        int horaActual = calendar.get(Calendar.HOUR_OF_DAY);
+        if(horaActual >= 15) {
+            calendar.add(Calendar.DAY_OF_MONTH, 1);
+        }
+
+        calendar.set(Calendar.HOUR_OF_DAY, 15);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+
+        return calendar.getTimeInMillis();
     }
 
     public static Notification crearNotificacion(Context context) {
@@ -47,9 +69,9 @@ public class NotificationService {
         Notification.Builder builder = new Notification.Builder(context);
 
         builder.setSmallIcon(R.drawable.ic_tenedor);
-        builder.setContentTitle("Hoy comemos");
+        builder.setContentTitle(context.getString(R.string.notification_title));
         builder.setContentText(receta.toString());
-//            builder.setAutoCancel(true);
+        builder.setAutoCancel(true);
 
         Uri uri = RingtoneManager
                 .getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
