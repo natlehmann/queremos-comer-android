@@ -31,9 +31,6 @@ public class MenuSemanalActivity extends AppCompatActivity {
         menuTable.addHeaderView(inflater.inflate(R.layout.row_menu_header, null), null, false);
 
         new LeerMenuTask(this).execute();
-
-        NotificationService.scheduleNotification(this);
-
     }
 
     public void setMenuAdapter(final Menu menu) {

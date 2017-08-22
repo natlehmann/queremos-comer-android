@@ -3,4 +3,5 @@
     <string name="dia">DIA</string>
     <string name="almuerzo">almuerzo</string>
     <string name="cena">cena</string>
+    <string name="title_activity_main">Queremos comer</string>
 </resources>
